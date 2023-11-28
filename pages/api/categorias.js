@@ -1,5 +1,8 @@
+import{PrismaClient} from'@prisma/client'
 
+const prisma = new PrismaClient()
+export default  async function handler(req, res) {
 
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+  const categorias = await prisma.categoria.findMany();
+  res.status(200).json(categorias)
 }
